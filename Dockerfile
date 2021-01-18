@@ -11,7 +11,7 @@ RUN apk update \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
 
-RUN addgroup -g 100 staff
+RUN addgroup -g 65537 staff
 
 RUN adduser \
     --disabled-password \
