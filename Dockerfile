@@ -1,8 +1,6 @@
 # https://hub.docker.com/_/alpine/
 FROM alpine:3.13
 
-MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
-
 
 RUN apk update \
  && apk upgrade \
@@ -12,3 +10,14 @@ RUN apk update \
             ca-certificates \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
+
+RUN addgroup -g 100 staff
+
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "$(pwd)" \
+    --ingroup staff \
+    --no-create-home \
+    --uid 1026 \
+    steve
